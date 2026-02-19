@@ -1,150 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Shoe Store</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #111;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #333;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: orange;
-        }
-
-        .hero {
-            background: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff') no-repeat center;
-            background-size: cover;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-        }
-
-        .products {
-            display: flex;
-            justify-content: space-around;
-            padding: 40px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: white;
-            width: 250px;
-            margin: 15px;
-            padding: 15px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .card h3 {
-            margin: 10px 0;
-        }
-
-        .price {
-            color: green;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .btn {
-            background-color: black;
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: orange;
-        }
-
-        footer {
-            background-color: #111;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scientific Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-<header>
-    <h1>👟 Shoe Store</h1>
-</header>
-
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Shop</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-</nav>
-
-<div class="hero">
-    New Collection 2026
-</div>
-
-<section class="products">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1528701800489-20be3c99a1d1" alt="Shoe">
-        <h3>Running Shoes</h3>
-        <p class="price">₹1999</p>
-        <button class="btn">Buy Now</button>
+  <main class="calculator" role="application" aria-label="Scientific calculator">
+    <div class="display">
+      <div id="expression" class="expression" aria-live="polite"></div>
+      <div id="result" class="result" aria-live="polite">0</div>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552" alt="Shoe">
-        <h3>Casual Shoes</h3>
-        <p class="price">₹2499</p>
-        <button class="btn">Buy Now</button>
+    <div class="controls">
+      <div class="row">
+        <button class="btn func" data-action="toggle-deg">Deg</button>
+        <button class="btn func" data-action="toggle-sign">+/-</button>
+        <button class="btn func" data-action="percent">%</button>
+        <button class="btn func" data-action="clear">C</button>
+        <button class="btn func" data-action="back">⌫</button>
+      </div>
+
+      <div class="row">
+        <button class="btn fn" data-value="sin(">sin</button>
+        <button class="btn fn" data-value="cos(">cos</button>
+        <button class="btn fn" data-value="tan(">tan</button>
+        <button class="btn fn" data-value="sqrt(">√</button>
+        <button class="btn fn" data-value="pow(">xʸ</button>
+      </div>
+
+      <div class="row">
+        <button class="btn fn" data-value="asin(">asin</button>
+        <button class="btn fn" data-value="acos(">acos</button>
+        <button class="btn fn" data-value="atan(">atan</button>
+        <button class="btn fn" data-value="ln(">ln</button>
+        <button class="btn fn" data-value="log10(">log</button>
+      </div>
+
+      <div class="row">
+        <button class="btn number" data-value="7">7</button>
+        <button class="btn number" data-value="8">8</button>
+        <button class="btn number" data-value="9">9</button>
+        <button class="btn op" data-value="/">÷</button>
+        <button class="btn op" data-value="(">(</button>
+      </div>
+
+      <div class="row">
+        <button class="btn number" data-value="4">4</button>
+        <button class="btn number" data-value="5">5</button>
+        <button class="btn number" data-value="6">6</button>
+        <button class="btn op" data-value="*">×</button>
+        <button class="btn op" data-value=")">)</button>
+      </div>
+
+      <div class="row">
+        <button class="btn number" data-value="1">1</button>
+        <button class="btn number" data-value="2">2</button>
+        <button class="btn number" data-value="3">3</button>
+        <button class="btn op" data-value="-">−</button>
+        <button class="btn fn" data-value="fact(">x!</button>
+      </div>
+
+      <div class="row">
+        <button class="btn number" data-value="0">0</button>
+        <button class="btn number" data-value=".">.</button>
+        <button class="btn op" data-value="^">^</button>
+        <button class="btn op" data-value="+">+</button>
+        <button class="btn func" data-action="evaluate" id="equals">=</button>
+      </div>
+
+      <div class="row extras">
+        <button class="btn fn" data-value="pi">π</button>
+        <button class="btn fn" data-value="e">e</button>
+        <button class="btn fn" data-value="abs(">abs</button>
+        <button class="btn fn" data-value="pow(">pow</button>
+        <button class="btn func" data-action="clear-all">AC</button>
+      </div>
     </div>
+  </main>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77" alt="Shoe">
-        <h3>Sports Shoes</h3>
-        <p class="price">₹2999</p>
-        <button class="btn">Buy Now</button>
-    </div>
-</section>
-
-<footer>
-    © 2026 Shoe Store | All Rights Reserved
-</footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
